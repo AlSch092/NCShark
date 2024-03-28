@@ -9,7 +9,7 @@ using System.Security.Principal;
 
 using SharpPcap.LibPcap;
 
-namespace MapleShark
+namespace NCShark
 {
     internal static class Program
     {

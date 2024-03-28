@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
-namespace MapleShark
+namespace NCShark
 {
     public partial class SendPacketForm : Form
     {

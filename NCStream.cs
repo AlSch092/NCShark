@@ -1,7 +1,7 @@
 ﻿//NCShark - By AlSch092 @ Github, thanks to @Diamondo25 for MapleShark
 using System;
 
-namespace MapleShark
+namespace NCShark
 {
     [Flags]
     public enum TransformMethod : int

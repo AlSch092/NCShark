@@ -1,16 +1,11 @@
 ﻿//NCShark - By AlSch092 @ Github, thanks to @Diamondo25 for MapleShark
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace MapleShark
+namespace NCShark
 {
     public partial class ScriptForm : DockContent
     {

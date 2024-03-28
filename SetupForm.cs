@@ -10,7 +10,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MapleShark
+namespace NCShark
 {
     public partial class SetupForm : Form
     {
@@ -18,7 +18,7 @@ namespace MapleShark
         {
             InitializeComponent();
 
-            Text = "MapleShark " + Program.AssemblyVersion + ", " + Program.AssemblyCopyright;
+            Text = "NCShark " + Program.AssemblyVersion + ", " + Program.AssemblyCopyright;
             bool selected = false;
             int localAreaConnection = -1;
 

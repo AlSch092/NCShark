@@ -1,5 +1,5 @@
 ﻿//NCShark - By AlSch092 @ Github, thanks to @Diamondo25 for MapleShark
-namespace MapleShark
+namespace NCShark
 {
     partial class frmSplash
     {
@@ -41,7 +41,7 @@ namespace MapleShark
             // pictureBox1
             // 
             this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Image = global::MapleShark.Properties.Resources.SharkLogo;
+            this.pictureBox1.Image = global::NCShark.Properties.Resources.SharkLogo;
             this.pictureBox1.Location = new System.Drawing.Point(32, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(254, 118);

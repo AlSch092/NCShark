@@ -6,20 +6,13 @@ using PacketDotNet.Utils;
 using PacketDotNet.LLDP;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
-
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Net.Mail;
-using System.Net.NetworkInformation;
 
-namespace MapleShark
+namespace NCShark
 {
     public partial class MainForm : Form
     {
@@ -29,19 +22,15 @@ namespace MapleShark
         private DataForm mDataForm = new DataForm();
         private StructureForm mStructureForm = new StructureForm();
         private PropertyForm mPropertyForm = new PropertyForm();
-        private SendPacketForm sendForm = new SendPacketForm();
-
-       
+            
         private string[] _startupArguments = null;
 
         public MainForm(string[] startupArguments)
         {
             InitializeComponent();
-            Text = "NCShark " + Program.AssemblyVersion;
+            Text = "NCShark " + Program.AssemblyVersion + "By AlSch092 [Github] with special thanks to Diamondo25";
 
             _startupArguments = startupArguments;
-
-            sendForm.Show();
         }
 
         public SearchForm SearchForm { get { return mSearchForm; } }
@@ -97,16 +86,13 @@ namespace MapleShark
                 if (device.Interface.FriendlyName == Config.Instance.Interface)
                 {
                     mDevice = device;
-                    //sendForm.sourceMAC = BitConverter.ToString(mDevice.MacAddress.GetAddressBytes()); //source MAC
                     break;
                 }
             }
 
             if (mDevice == null)
             {
-                // Well shit...
-
-                MessageBox.Show("Invalid configuration. Please re-setup your MapleShark configuration.", "NCShark", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid configuration. Please re-setup your NCShark configuration.", "NCShark", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (ShowSetupForm() != DialogResult.OK)
                 {
                     Close();
@@ -125,7 +111,6 @@ namespace MapleShark
                 mDevice.Open();
             }
 
-            sendForm.SetDevice(mDevice, "tcp");
             mDevice.Filter = string.Format("tcp portrange {0}-{1}", Config.Instance.LowPort, Config.Instance.HighPort);
         }
 
@@ -323,19 +308,8 @@ namespace MapleShark
                   
                     var parentPacket = tcpPacket.ParentPacket as IPv4Packet; //extract info
 
-                    if (parentPacket != null)
+                    if (parentPacket != null) //strip info from underlying tcp/ethernet packet if needed
                     {
-                        sendForm.lastIdentificationNum = parentPacket.Id;
-                        sendForm.lastSequenceNumber = tcpPacket.SequenceNumber;
-                        sendForm.lastPacketSize = (uint)tcpPacket.PayloadData.Length;
-                        sendForm.lastAcknowledgmentNumber = (uint)tcpPacket.AcknowledgmentNumber;
-                        sendForm.sourcePort = tcpPacket.SourcePort;
-                        sendForm.destPort = tcpPacket.DestinationPort;
-
-                        // Get the source and destination IP addresses from the IPv4 packet
-                        sendForm.sourceIp = parentPacket.SourceAddress.ToString();
-                        sendForm.destIp = parentPacket.DestinationAddress.ToString();
-
                         // Now you have the source and destination IP addresses
                         //Console.WriteLine($"Source IP: {sendForm.sourceIp}");
                         //Console.WriteLine($"Destination IP: {sendForm.destIp}");
@@ -499,7 +473,7 @@ namespace MapleShark
             bool doSaveQuestioning = true;
             if (sessions > 5)
             {
-                doSaveQuestioning = MessageBox.Show("You've got " + sessions + " sessions open. Say 'Yes' if you want to get a question for each session, 'No' if you want to quit MapleShark.", "MapleShark", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes;
+                doSaveQuestioning = MessageBox.Show("You've got " + sessions + " sessions open. Say 'Yes' if you want to get a question for each session, 'No' if you want to quit NCShark.", "NCShark", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes;
             }
 
             while (doSaveQuestioning && sessionForms.Count > 0)
@@ -508,7 +482,7 @@ namespace MapleShark
                 if (!ses.Saved)
                 {
                     ses.Focus();
-                    DialogResult result = MessageBox.Show(string.Format("Do you want to save the session '{0}'?", ses.Text), "MapleShark", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                    DialogResult result = MessageBox.Show(string.Format("Do you want to save the session '{0}'?", ses.Text), "NCShark", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
 
                     if (result == DialogResult.Yes)
                     {

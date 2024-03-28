@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MapleShark
+namespace NCShark
 {
     public sealed class StructureSegment
     {

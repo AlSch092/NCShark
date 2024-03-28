@@ -1,5 +1,5 @@
 ﻿//NCShark - By AlSch092 @ Github, thanks to @Diamondo25 for MapleShark
-namespace MapleShark
+namespace NCShark
 {
     partial class MainForm
     {
@@ -225,7 +225,7 @@ namespace MapleShark
             // 
             // mOpenDialog
             // 
-            this.mOpenDialog.Filter = "MapleShark Binary Files|*.msb";
+            this.mOpenDialog.Filter = "NCShark Binary Files|*.msb";
             this.mOpenDialog.Multiselect = true;
             this.mOpenDialog.ReadOnlyChecked = true;
             this.mOpenDialog.RestoreDirectory = true;
@@ -273,7 +273,7 @@ namespace MapleShark
             // 
             // mStopStartButton
             // 
-            this.mStopStartButton.Image = global::MapleShark.Properties.Resources.Button_Blank_Red_icon;
+            this.mStopStartButton.Image = global::NCShark.Properties.Resources.Button_Blank_Red_icon;
             this.mStopStartButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mStopStartButton.Name = "mStopStartButton";
             this.mStopStartButton.Size = new System.Drawing.Size(94, 22);

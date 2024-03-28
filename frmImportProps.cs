@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 using System.IO;
 
-namespace MapleShark
+namespace NCShark
 {
     public partial class frmImportProps : Form
     {

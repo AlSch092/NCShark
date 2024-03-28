@@ -13,7 +13,7 @@ using ScriptNET.Runtime;
 using System.Reflection;
 using System.Security.Principal;
 
-namespace MapleShark
+namespace NCShark
 {
     public partial class frmSplash : Form
     {
@@ -92,7 +92,7 @@ namespace MapleShark
             Config.Instance.Save();
 
             initialisator.ReportProgress(0, "Registering .msb extension");
-            RegisterFileAssociation(".msb", "MapleShark", "MapleShark Binary File", filepath, string.Empty, 0);
+            RegisterFileAssociation(".msb", "NCShark", "NCShark Binary File", filepath, string.Empty, 0);
         }
 
 

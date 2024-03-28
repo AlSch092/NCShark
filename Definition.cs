@@ -1,5 +1,5 @@
 ﻿//NCShark - By AlSch092 @ Github, thanks to @Diamondo25 for MapleShark
-namespace MapleShark
+namespace NCShark
 {
     public sealed class Definition
     {

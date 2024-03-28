@@ -6,7 +6,7 @@
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{01F7E3B6-B831-4D44-8B44-095768212822}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MapleShark</RootNamespace>
     <AssemblyName>NCShark</AssemblyName>
@@ -322,17 +322,6 @@
     <Compile Include="PropertyForm.Designer.cs">
       <DependentUpon>PropertyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Protobuf\M4\Enums.cs" />
-    <Compile Include="Protobuf\M4\Messages.cs" />
-    <Compile Include="Protobuf\NC\A2A.cs" />
-    <Compile Include="Protobuf\NC\AS2C.cs" />
-    <Compile Include="Protobuf\NC\C2AS.cs" />
-    <Compile Include="Protobuf\NC\C2FS.cs" />
-    <Compile Include="Protobuf\NC\Common.cs" />
-    <Compile Include="Protobuf\NC\CommonEnum.cs" />
-    <Compile Include="Protobuf\NC\FS2C.cs" />
-    <Compile Include="Protobuf\NC\GS2C.cs" />
-    <Compile Include="Protobuf\Serializer.cs" />
     <Compile Include="SafeNativeMethods.cs" />
     <Compile Include="ScriptAPI.cs" />
     <Compile Include="ScriptDotNet\AST\AScriptAstTemplate.cs" />
@@ -946,6 +935,8 @@
     <None Include="SharpPcap\PacketDotNet\PacketDotNet.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\SharkLogo.bmp" />
+    <Content Include="Resources\SharkLogo.png" />
     <Content Include="SyntaxBox\Text\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>

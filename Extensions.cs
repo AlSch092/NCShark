@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MapleShark
+namespace NCShark
 {
     public static class Extensions
     {

@@ -1,5 +1,5 @@
 ﻿//NCShark - By AlSch092 @ Github, thanks to @Diamondo25 for MapleShark
-namespace MapleShark
+namespace NCShark
 {
     partial class SetupForm
     {
@@ -82,7 +82,7 @@ namespace MapleShark
             this.mHighPortNumeric.Size = new System.Drawing.Size(100, 20);
             this.mHighPortNumeric.TabIndex = 12;
             this.mHighPortNumeric.Value = new decimal(new int[] {
-            65535,
+            35001,
             0,
             0,
             0});
@@ -105,7 +105,7 @@ namespace MapleShark
             this.mLowPortNumeric.Size = new System.Drawing.Size(100, 20);
             this.mLowPortNumeric.TabIndex = 11;
             this.mLowPortNumeric.Value = new decimal(new int[] {
-            65535,
+            33004,
             0,
             0,
             0});
@@ -152,14 +152,12 @@ namespace MapleShark
             // 
             this.mProtocol.FormattingEnabled = true;
             this.mProtocol.Items.AddRange(new object[] {
-            "Plaintext",
-            "Night Crows",
-            "Mir 4"});
+            "Night Crows"});
             this.mProtocol.Location = new System.Drawing.Point(12, 68);
             this.mProtocol.Name = "mProtocol";
             this.mProtocol.Size = new System.Drawing.Size(131, 21);
             this.mProtocol.TabIndex = 16;
-            this.mProtocol.Text = "Protocol...";
+            this.mProtocol.Text = "Night Crows";
             // 
             // SetupForm
             // 

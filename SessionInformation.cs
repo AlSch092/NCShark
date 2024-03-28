@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MapleShark {
+namespace NCShark {
 	public partial class SessionInformation : Form {
 		public SessionInformation() {
 			InitializeComponent();

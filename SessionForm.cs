@@ -8,13 +8,9 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
-
 using System.Text.RegularExpressions;
-using MapleShark.Protobuf.M4;
-using System.Net.Sockets;
-using System.Reflection.Emit;
 
-namespace MapleShark
+namespace NCShark
 {
     public partial class SessionForm : DockContent
     {
@@ -82,7 +78,6 @@ namespace MapleShark
             mOpcodes = mOpcodes.OrderBy(a => a.Second).ToList();
         }
 
-
         internal bool MatchTCPPacket(TcpPacket pTCPPacket)
         {
             if (mTerminated) return false;
@@ -143,8 +138,6 @@ namespace MapleShark
                     mLocalEndpoint = ((PacketDotNet.IPv4Packet)pTCPPacket.ParentPacket).DestinationAddress.ToString() + ":" + pTCPPacket.DestinationPort.ToString();
                     
                     Console.WriteLine("[CONNECTION] From {0} to {1}", mRemoteEndpoint, mLocalEndpoint);
-
-                    //return Results.Continue;
                 }
                 catch
                 {
@@ -152,13 +145,12 @@ namespace MapleShark
                 }
             }
 
-            //if (pTCPPacket.Syn && pTCPPacket.Ack) { mInboundSequence = (uint)(pTCPPacket.SequenceNumber + 1); return Results.Continue; }
-
-            if (pTCPPacket.PayloadData.Length == 0) return Results.Continue;
-
             if(pTCPPacket.SourcePort == mLocalPort && !loggingOutbound) //IGNORE OUTBOUND
                 return Results.Continue;
             else if(pTCPPacket.DestinationPort == mLocalPort && !loggingInbound)
+                return Results.Continue;
+
+            if (pTCPPacket.PayloadData.Length == 0)
                 return Results.Continue;
 
             byte[] tcpData = pTCPPacket.PayloadData;
@@ -178,7 +170,6 @@ namespace MapleShark
                 
                 if (pTCPPacket.SourcePort == mLocalPort) //OUTBOUND
                 {
-                    //decrypt tcp data
                     byte[] tcpDataDecrypted = new byte[tcpData.Length];
                     Buffer.BlockCopy(tcpData, 0, tcpDataDecrypted, 0, tcpData.Length);
 
@@ -191,7 +182,10 @@ namespace MapleShark
                     ushort opcode = BitConverter.ToUInt16(tcpDataDecrypted, 2);
                     Definition definition = Config.Instance.GetDefinition(false, opcode);
 
-                    packet = new NCPacket(pArrivalTime, true, opcode, definition == null ? "" : definition.Name, tcpDataDecrypted);
+                    byte[] tcpDataToLog = new byte[tcpData.Length - 2];
+                    Buffer.BlockCopy(tcpDataDecrypted, 2, tcpDataToLog, 0, tcpData.Length - 2);
+
+                    packet = new NCPacket(pArrivalTime, true, opcode, definition == null ? "" : definition.Name, tcpDataToLog);
                     
                 }
                 else //INBOUND
@@ -208,9 +202,11 @@ namespace MapleShark
                     ushort opcode = BitConverter.ToUInt16(tcpDataDecrypted, 2);
                     Definition definition = Config.Instance.GetDefinition(false, opcode);
 
-                    //decrypt tcp data
-                    packet = new NCPacket(pArrivalTime, false, opcode, definition == null ? "" : definition.Name, tcpDataDecrypted);
+                    byte[] tcpDataToLog = new byte[tcpData.Length - 2];
+                    Buffer.BlockCopy(tcpDataDecrypted, 2, tcpDataToLog, 0, tcpData.Length - 2);
 
+                    //decrypt tcp data
+                    packet = new NCPacket(pArrivalTime, false, opcode, definition == null ? "" : definition.Name, tcpDataToLog);
                 }
 
                 if (!mOpcodes.Exists(kv => kv.First == packet.Outbound && kv.Second == packet.Opcode)) // Should be false, but w/e
@@ -338,7 +334,7 @@ namespace MapleShark
                            v2 = (byte)((MapleSharkVersion >> 8) & 0xF),
                            v3 = (byte)((MapleSharkVersion >> 4) & 0xF),
                            v4 = (byte)((MapleSharkVersion >> 0) & 0xF);
-                    Console.WriteLine("Loading MSB file, saved by MapleShark V{0}.{1}.{2}.{3}", v1, v2, v3, v4);
+                    Console.WriteLine("Loading MSB file, saved by NCShark V{0}.{1}.{2}.{3}", v1, v2, v3, v4);
 
                     if (MapleSharkVersion == 0x2012)
                     {
@@ -373,7 +369,7 @@ namespace MapleShark
                     }
                     else
                     {
-                        MessageBox.Show("I have no idea how to open this MSB file. It looks to me as a version " + string.Format("{0}.{1}.{2}.{3}", v1, v2, v3, v4) + " MapleShark MSB file... O.o?!");
+                        MessageBox.Show("I have no idea how to open this MSB file. It looks to me as a version " + string.Format("{0}.{1}.{2}.{3}", v1, v2, v3, v4) + " NCShark MSB file... O.o?!");
                         return;
                     }
                 }

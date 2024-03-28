@@ -9,7 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace MapleShark
+namespace NCShark
 {
     public partial class SearchForm : DockContent
     {

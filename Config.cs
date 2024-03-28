@@ -4,15 +4,15 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace MapleShark
+namespace NCShark
 {
     public sealed class Config
     {
         public string Protocol;
 
         public string Interface = "";
-        public ushort LowPort = 31000;
-        public ushort HighPort = 33000;
+        public ushort LowPort = 33004;
+        public ushort HighPort = 35001;
         
         [System.Obsolete]
         public List<Definition> Definitions = new List<Definition>();

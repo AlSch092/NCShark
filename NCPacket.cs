@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MapleShark
+namespace NCShark
 {
     public sealed class NCPacket : ListViewItem
     {
