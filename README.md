@@ -18,5 +18,6 @@ Open NCShark.exe after ensuring WinPCap drivers are installed. Under File -> NCS
 - Data sending is not supported in this project to prevent general abuse towards the game servers.
 - The program can become overwhelmed with data in areas of high inbound data activity (hundreds of entities moving nearby at once, for example)
 - A new session must be entered in-game to begin logging data due to the nature of the game's encryption method
+- Inbound packets above a certain length are fragmented by the game server and split into multiple, and this program does not re-package them into a single one.
 
 ![NC_PE](https://github.com/AlSch092/NCShark/assets/94417808/eb842b79-e40a-47c9-8a90-15af04430b99)
