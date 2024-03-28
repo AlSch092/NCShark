@@ -368,13 +368,13 @@ namespace NCShark
             if (started)
             {
                 started = false; //stop
-                mStopStartButton.Image = Properties.Resources.Button_Blank_Green_icon;
+                //mStopStartButton.Image = Properties.Resources.Button_Blank_Green_icon;
                 mStopStartButton.Text = "Start sniffing";
             }
             else
             {
                 started = true; //start
-                mStopStartButton.Image = Properties.Resources.Button_Blank_Red_icon;
+                //mStopStartButton.Image = Properties.Resources.Button_Blank_Red_icon;
                 mStopStartButton.Text = "Stop sniffing";
             }
         }

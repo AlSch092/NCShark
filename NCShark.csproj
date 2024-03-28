@@ -250,7 +250,6 @@
     <Compile Include="frmSplash.Designer.cs">
       <DependentUpon>frmSplash.cs</DependentUpon>
     </Compile>
-    <Compile Include="Licensing\License.cs" />
     <Compile Include="HexBox\ByteCollection.cs" />
     <Compile Include="HexBox\DataBlock.cs" />
     <Compile Include="HexBox\DataMap.cs" />

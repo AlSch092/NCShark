@@ -273,7 +273,7 @@ namespace NCShark
             // 
             // mStopStartButton
             // 
-            this.mStopStartButton.Image = global::NCShark.Properties.Resources.Button_Blank_Red_icon;
+            this.mStopStartButton.Image = global::MapleShark.Properties.Resources.Button_Blank_Red_icon;
             this.mStopStartButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mStopStartButton.Name = "mStopStartButton";
             this.mStopStartButton.Size = new System.Drawing.Size(94, 22);
