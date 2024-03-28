@@ -1,16 +1,23 @@
 # NCShark: PCap Packet Logger for Night Crows
 
-# Credits
-- AlSch092 @ Github
+## Credits
+- AlSch092 @ Github for porting to Night Crows Global
 - Diamondo25 @ Github for MapleShark
 
-# What is this?
-NCShark is a pcap driver powered packet logging tool made in C# (fork of MapleShark) for the game Night Crows. This program bypasses any anti-cheat mechanisms to bring you ban-free data logging.
+## What is this?
+NCShark is a pcap driver powered packet logging tool made in C# (fork of MapleShark) for the game Night Crows. This program bypasses any anti-cheat mechanisms to bring you ban-free data logging. All game packet payloads are Protobuf structures, which means they must be deserialized in order to properly interpret parameter field values. The program does not depend on any external custom DLLs.
 
-# Limitations
-- Data sending is prohibited in this project to prevent general abuse of the game servers.
+## Requirements
+- You must have WinPCap drivers installed
+- Proxy/VPN must be turned off while using this program (unless you know how to set this up properly)
+
+## How to Use
+Open NCShark.exe after ensuring WinPCap drivers are installed. Under File -> NCShark Setup, select your wireless or ethernet interface, and leave the rest of the defaults. Click 'OK' and then enter in-game and if all is correct, a new logging session should be created.
+
+## Limitations
+- Data sending is not supported in this project to prevent general abuse towards the game servers.
 - The program can become overwhelmed with data in areas of high inbound data activity (hundreds of entities moving nearby at once, for example)
+- A new session must be entered in-game to begin logging data due to the nature of the game's encryption method
+- Inbound packets above a certain length are fragmented by the game server and split into multiple, and this program does not re-package them into a single one.
 
-# End note
-
-Inevitably there will be users who attempt to monetize this project by making 'object/entity scanners'. Do not pay for cheats: if you do you are being ripped off and are likely supporting criminals. Bots/cheats made by 99% of people will also get you banned as the cheat maker likely has no proper experience/no deep skill, and will likely put malware onto your computer. Just say no to buying cheats.
+![NC_PE](https://github.com/AlSch092/NCShark/assets/94417808/eb842b79-e40a-47c9-8a90-15af04430b99)
