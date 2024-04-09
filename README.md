@@ -7,7 +7,7 @@
 - Diamondo25 @ Github for MapleShark
 
 ## What is this?
-NCShark is a pcap driver powered packet logging tool made in C# (fork of MapleShark) for the game Night Crows. This program bypasses any anti-cheat mechanisms to bring you ban-free data logging. All game packet payloads are Protobuf structures, which means they must be deserialized in order to properly interpret parameter field values. The program does not depend on any external custom DLLs.
+NCShark is a pcap driver powered packet logging tool made in C# (fork of MapleShark) for the game Night Crows. This program bypasses any anti-cheat mechanisms to bring you ban-free data logging. All game packet payloads are Protobuf structures, which means they must be deserialized in order to properly interpret parameter field values.
 
 ## Requirements
 - You must have WinPCap drivers installed
