@@ -11,7 +11,7 @@ NCShark is a pcap driver powered packet logging tool made in C# (fork of MapleSh
 
 ## Requirements
 - You must have WinPCap drivers installed
-- Proxy/VPN must be turned off while using this program (unless you know how to set this up properly)
+- VPN must be turned off while using this program (unless you know how to set this to the correct network interface for your VPN)
 
 ## How to Use
 Open NCShark.exe after ensuring WinPCap drivers are installed. Under File -> NCShark Setup, select your wireless or ethernet interface, and leave the rest of the defaults. Click 'OK' and then enter in-game and if all is correct, a new logging session should be created.
